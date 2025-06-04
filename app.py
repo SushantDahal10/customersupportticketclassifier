@@ -1,12 +1,13 @@
 from flask import Flask, request, jsonify
 import joblib
-
+from flask_cors import CORS
 # Load model and vectorizer (placed in the same folder as app.py)
 model = joblib.load('best_complaint_model.pkl')
 vectorizer = joblib.load('vectorizer.pkl')
 
 # Create Flask app
 app = Flask(__name__)
+CORS(app)
 
 label_map = {
     0: 'Bank Account services',
